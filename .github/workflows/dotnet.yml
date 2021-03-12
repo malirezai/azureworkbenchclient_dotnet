@@ -17,9 +17,15 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        source-url: https://nuget.pkg.github.com/malirezai/index.json
+      env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
+          
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Build solution and generate NuGet package
+      run: dotnet pack -c Release -o out
+    - name: Push generated package to GitHub registry
+      run: dotnet nuget push ./out/*.nupkg --skip-duplicate --no-symbols true
