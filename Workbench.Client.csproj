@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Microsoft.Workbench.Client</PackageId>
+    <PackageId>malirezai.Workbench.Client</PackageId>
     <Version>0.1.0</Version>
     <Authors>Mahdi Alirezaie</Authors>
     <Company>Microsoft</Company>
